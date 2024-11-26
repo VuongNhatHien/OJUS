@@ -29,6 +29,13 @@ jobs:
         cache-dependency-path: backend/package-lock.json
     - run: npm ci
       working-directory: ./backend
+
+    - name: Set up environment
+      run: |
+        touch ./backend/.env
+        touch ./backend/.env.test
+        echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> ./backend/.env
+        echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> ./backend/.env.test
     - run: npm run build --if-present
       working-directory: ./backend
     - run: npm test
