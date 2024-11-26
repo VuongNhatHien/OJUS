@@ -4,10 +4,12 @@
 name: Node.js CI
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  push: 
+    branches:
+      - "**"
+  pull_request: 
+    branches:
+      - "**"
 
 jobs:
   build:
@@ -35,7 +37,7 @@ jobs:
         touch ./backend/.env
         touch ./backend/.env.test
         echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> ./backend/.env
-        echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> ./backend/.env.test
+        echo DATABASE_URL=${{ secrets.DATABASE_URL_TEST }} >> ./backend/.env.test
     - run: npm run build --if-present
       working-directory: ./backend
     - run: npm test
