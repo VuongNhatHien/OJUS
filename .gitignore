@@ -3,3 +3,4 @@ backend/.env
 frontend/node_modules/
 backend/.idea
 backend/mysql
+frontend/temp
